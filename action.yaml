@@ -1,0 +1,17 @@
+name: 'Hypervector results Github Action'
+description: 'Retrieve test results report from Hypervector API'
+inputs:
+  HYPERVECTOR_API_KEY:
+    description: 'Hypervector API key'
+    required: true
+
+outputs:
+  result:
+    description: 'Test assertion result from Hypervector'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.HYPERVECTOR_API_KEY }}
+    - ${{ inputs.GITHUB_TOKEN }}
