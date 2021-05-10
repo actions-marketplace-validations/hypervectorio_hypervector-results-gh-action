@@ -31,8 +31,15 @@ def main():
     bencmark_uuid = assertion['benchmark_uuid']
     hypervector_link = f"https://dashboard.hypervector.io/benchmark/{bencmark_uuid}"
 
-    comment = f"{json.dumps(assertion)}" \
-              f"\n\n" \
+    if assertion['asserted'] is True:
+        result_icon = '✅ PASSED'
+    else:
+        result_icon = '❌ FAILED'
+
+    comment = f"{result_icon}\n" \
+              f"```json\n" \
+              f"{json.dumps(assertion, indent=2)}" \
+              f"```\n\n" \
               f"View assertion history on Hypervector: {hypervector_link}"
 
     pr.create_issue_comment(comment)
