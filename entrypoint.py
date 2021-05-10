@@ -38,7 +38,7 @@ def main():
 
     comment = f"{result_icon}\n" \
               f"```json\n" \
-              f"{json.dumps(assertion, indent=2)}" \
+              f"{json.dumps(assertion, indent=2)}\n" \
               f"```\n\n" \
               f"View assertion history on Hypervector: {hypervector_link}"
 
